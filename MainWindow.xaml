@@ -1,0 +1,68 @@
+﻿<mah:MetroWindow x:Class="MaJyxER.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:MaJyxER"
+        mc:Ignorable="d"
+        Title="MaJyx Easy Rename" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="28" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Top" Margin="10 0 10 0">
+                <DockPanel LastChildFill="True">
+                    <Label DockPanel.Dock="Top" Content="Path:" />
+                    <Button DockPanel.Dock="Right" Content="Browse" Click="Button_Click" />
+                    <TextBox DockPanel.Dock="Left" x:Name="TextPath" mah:TextBoxHelper.Watermark="Path to search and rename" HorizontalAlignment="Stretch" IsReadOnly="True" Width="auto" />
+                </DockPanel>
+                <DockPanel LastChildFill="True">
+                    <Label DockPanel.Dock="Top" Content="Regex" />
+                    <TextBox DockPanel.Dock="Left" x:Name="TextRegex" mah:TextBoxHelper.Watermark="s/\\my\\path\\(\d+)\(.*)$/\\new\\path\\${2}.${3};" FontFamily="Lucida Console" HorizontalAlignment="Stretch" Width="auto" />
+                </DockPanel>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Top" Margin="10 24 10 0">
+                <DockPanel LastChildFill="True">
+                    <Label DockPanel.Dock="Left" Content="Recursive search:" />
+                    <mah:ToggleSwitch x:Name="ToggleRecursive" DockPanel.Dock="Right" HorizontalAlignment="Right" Width="200"/>
+                </DockPanel>
+                <DockPanel LastChildFill="True">
+                    <Label DockPanel.Dock="Left" Content="Matching mode:" />
+                    <mah:ToggleSwitch x:Name="ToggleMatchMode" DockPanel.Dock="Right" HorizontalAlignment="Right" OffContent="Match only filename" OnContent="Match on full path" Width="200"/>
+                </DockPanel>
+                <DockPanel LastChildFill="True">
+                    <Label DockPanel.Dock="Left" Content="Delete empty folders:" />
+                    <mah:ToggleSwitch x:Name="ToggleCleanFolders"  DockPanel.Dock="Right" HorizontalAlignment="Right" Width="200" />
+                </DockPanel>
+            </StackPanel>
+        </Grid>
+        <TabControl Grid.Row="1">
+            <TabItem Header="Changes">
+                <DataGrid x:Name="ChangeList" ItemsSource="{Binding matches}" IsReadOnly="True" />
+            </TabItem>
+            <TabItem Header="Console">
+                <TextBox x:Name="Console" IsReadOnly="True" VerticalScrollBarVisibility="Auto" mah:ScrollViewerHelper.IsHorizontalScrollWheelEnabled="True"></TextBox>
+            </TabItem>
+        </TabControl>
+        <mah:ProgressRing x:Name="SearchProgress" Grid.Row="1"
+                  IsActive="False" />
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Label x:Name="LabelMatchCount" Content="0" />
+            <Label Content="file(s) matched" />
+            <Button x:Name="ButtonSearch" Content="Search" Padding="10 0 10 0" Margin="5 0 5 0" Click="ButtonSearch_Click" />
+            <Button x:Name="ButtonApply" Content="Apply" Padding="10 0 10 0" Margin="0 0 5 0" IsEnabled="False" Click="ButtonApply_Click"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left">
+            <Label x:Name="LabelCurrent" />
+        </StackPanel>
+    </Grid>
+</mah:MetroWindow>

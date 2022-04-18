@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <RootNamespace>MaJyxER</RootNamespace>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>audio-waves.ico</ApplicationIcon>
+    <AssemblyName>MER</AssemblyName>
+    <Authors>HeavenSleep</Authors>
+    <Company>MaJyx</Company>
+    <Product>MaJyx Easy Rename</Product>
+    <Description>Renaming massive amount of files and folder has never been so simple</Description>
+    <Copyright>Copyright 2022 MaJyx</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MahApps.Metro" Version="2.4.9" />
+    <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
+  </ItemGroup>
+
+</Project>
