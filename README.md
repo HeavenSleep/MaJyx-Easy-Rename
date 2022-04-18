@@ -9,7 +9,7 @@ by doing Regular Expression matching and replace with a [`sed`](https://www.comm
 
 ## Getting started
 
-* .NET SDK 4.7.1 superior or equal
+* .NET SDK 5.0 superior or equal
 * CSharp IDE ([Visual Studio Community](https://visualstudio.microsoft.com/fr/) recommended)
 
 ## Code of Conduct
